@@ -1,7 +1,7 @@
 var webdriver = require('selenium-webdriver');
 var chai = require('chai');
 var assert = chai.assert;
-var driver,username,password,siginBtn;
+var driver,username,password,siginBtn,logo;
 var gettitle= function(){
   return new Promise(resolve => {
     setTimeout(function() {
@@ -41,7 +41,7 @@ describe('Test 2',async function(){
       this.timeout(240000);
       password=await driver.findElement(webdriver.By.css('#password'));
       await password.click();
-      await password.sendKeys('Enter Your Password');
+      await password.sendKeys('Kaushik@93');
     });
   });
 
@@ -51,4 +51,11 @@ describe('Test 2',async function(){
     siginBtn=await driver.findElement(webdriver.By.css('.ZLoginButton.DwtButton'));
     await siginBtn.click();
   });
+  });
+
+  describe('Test 5',async function(){
+    it('Should verify company logo',async function(){
+      this.timeout(280000);
+      logo=await driver.findElement(webdriver.By.css('.ImgAppBanner'));
+    });
   });
