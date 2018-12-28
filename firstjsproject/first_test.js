@@ -1,7 +1,7 @@
 var webdriver = require('selenium-webdriver');
 var chai = require('chai');
 var assert = chai.assert;
-var driver;
+var driver,username,password,siginBtn;
 var gettitle= function(){
   return new Promise(resolve => {
     setTimeout(function() {
@@ -11,7 +11,7 @@ var gettitle= function(){
   });
 }
 
-describe('Test 1',function(){
+describe('Test 1',async function(){
 
   before(()=>{
     driver = new webdriver.Builder().forBrowser('chrome').build();
@@ -19,32 +19,36 @@ describe('Test 1',function(){
   })
   
   it('Launch Url',async function(){
+    this.timeout(240000);
     driver.get('http://webmail.qainfotech.com');
-    const title= gettitle();
-    console.log(await title);
+    //const title= gettitle();
+    //console.log(await driver.gettitle());
   }); 
 });
 
-describe('Test 2',function(){
+describe('Test 2',async function(){
   it('Should able to enter username',async function(){
-    var username=await driver.findElement(webdriver.By.css('#username'));
-    username.click();
-    username.sendKeys('kaushikbanerjee@qainfotech.com');
+    this.timeout(240000);
+    username = await driver.findElement(webdriver.By.css('#username'));
+    await username.click();
+    await username.sendKeys('kaushikbanerjee@qainfotech.com');
   });
 
 });
   
-  describe('Test 3',function(){
+  describe('Test 3',async function(){
     it('Should able to enter password',async function(){
-      var password=await driver.findElement(webdriver.By.css('#password'));
-      password.click();
-      password.sendKeys('Enter Your Password');
+      this.timeout(240000);
+      password=await driver.findElement(webdriver.By.css('#password'));
+      await password.click();
+      await password.sendKeys('Enter Your Password');
     });
   });
 
-    describe('Test 4',function(){
+    describe('Test 4',async function(){
        it('Should able to sigin',async function(){
-    var siginBtn=await driver.findElement(webdriver.By.css('.ZLoginButton.DwtButton'));
-    siginBtn.click();
+        this.timeout(240000);
+    siginBtn=await driver.findElement(webdriver.By.css('.ZLoginButton.DwtButton'));
+    await siginBtn.click();
   });
   });
