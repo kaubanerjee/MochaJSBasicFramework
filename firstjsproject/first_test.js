@@ -41,7 +41,7 @@ describe('Test 2',async function(){
       this.timeout(240000);
       password=await driver.findElement(webdriver.By.css('#password'));
       await password.click();
-      await password.sendKeys('Kaushik@93');
+      await password.sendKeys('Enter your password');
     });
   });
 
